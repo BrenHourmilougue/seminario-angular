@@ -93,9 +93,9 @@ export class ArticleListComponent implements OnInit {
       product.quantity++;
     }
   }
-  //changeQuantity(event,product:Product):void{
-  //  console.log(event.key);
-  //}
+  changeQuantity(event:any,product:Product):void{
+    console.log(event.key);
+  }
 
   constructor() { }
 

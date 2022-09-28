@@ -1,33 +1,68 @@
 <table class="table">
-    <thead>
-        <tr>
-            <td>Imagen</td>
-            <td>Producto</td>
-            <td>Marca</td>
-            <td>Descripcion</td>
-            <td>Precio</td>
-            <td>oferta</td>
-            <td>Stock</td>
-            <td>Cantidad</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let product of products">
-            <td>imagen</td>
-            <td>{{product.productName}}</td>
-            <td>{{product.brand}}</td>
-            <td>{{product.description}}</td>
-            <td>
-                <span *ngIf = "product.discount==0" >{{product.price}}</span>
-                <span *ngIf = "product.discount>0"class="text-decoration-line-through">{{product.price | currency}}</span>
-            </td>
-            <td><span *ngIf = "product.discount>0"><span class="fw-bold text-success">{{product.price*(100-product.discount)/100 | currency}}</span></span></td>
-            <td><span class="badge text-bg-warning" *ngIf="product.stock==0">SIN STOCK</span><span *ngIf="product.stock!=0">{{product.stock}}</span></td>
-            <td>
-                <button type="button" class="btn-default btn-xs" (click)="downQuantity(product)">-</button>
-                {{product.quantity}}
-                <button type="button" class="btn-default btn-xs" (click)="upQuantity(product)">+</button>
-            </td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <td>Imagen</td>
+      <td>Producto</td>
+      <td>Marca</td>
+      <td>Descripcion</td>
+      <td>Precio</td>
+      <td>oferta</td>
+      <td>Stock</td>
+      <td>Cantidad</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>imagen</td>
+      <td>{{ product.productName }}</td>
+      <td>{{ product.brand }}</td>
+      <td>{{ product.description }}</td>
+      <td>
+        <span *ngIf="product.discount == 0">{{ product.price }}</span>
+        <span
+          *ngIf="product.discount > 0"
+          class="text-decoration-line-through"
+          >{{ product.price | currency }}</span
+        >
+      </td>
+      <td>
+        <span *ngIf="product.discount > 0"
+          ><span class="fw-bold text-success">{{
+            (product.price * (100 - product.discount)) / 100 | currency
+          }}</span></span
+        >
+      </td>
+      <td>
+        <span class="badge text-bg-warning" *ngIf="product.stock == 0"
+          >SIN STOCK</span
+        ><span *ngIf="product.stock != 0">{{ product.stock }}</span>
+      </td>
+      <td>
+        <div class="input-group">
+          <button
+            type="button"
+            class="btn btn-primary"
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+            (click)="downQuantity(product)"
+          >
+            -
+          </button>
+          <input
+            class="form-control"
+            type="number"
+            [(ngModel)]="product.quantity"
+            (keyup)="changeQuantity($event, product)"
+          />
+          <button
+            type="button"
+            class="btn btn-primary"
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+            (click)="upQuantity(product)"
+          >
+            +
+          </button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
 </table>
