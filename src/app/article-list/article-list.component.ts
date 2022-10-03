@@ -83,20 +83,7 @@ export class ArticleListComponent implements OnInit {
     },
   ]
 
-  downQuantity(product:Product):void{
-    if (product.quantity>0){
-      product.quantity--;
-    }
-  }
-  upQuantity(product:Product):void{
-    if (product.quantity<product.stock){
-      product.quantity++;
-    }
-  }
-  changeQuantity(event:any,product:Product):void{
-    console.log(event.key);
-  }
-
+  
   constructor() { }
 
   ngOnInit(): void {}
