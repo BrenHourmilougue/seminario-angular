@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService } from '../cart.service';
 import {Product} from './article';
 
 @Component({
@@ -10,8 +11,8 @@ export class ArticleListComponent implements OnInit {
 
   products : Product []=[
     {
-      productName : 'Nombre del producto',
-      brand : 'Marca',
+      productName : 'Pinza',
+      brand : 'Rottweiler',
       price : 1200,
       stock :4,
       description : 'Descripcion',
@@ -19,8 +20,8 @@ export class ArticleListComponent implements OnInit {
       discount : 10,
     },
     {
-      productName : 'Nombre del producto',
-      brand : 'Marca',
+      productName : 'Destornillador',
+      brand : 'Bremen',
       price : 1000,
       stock :0,
       description : 'Descripcion',
@@ -28,8 +29,8 @@ export class ArticleListComponent implements OnInit {
       discount : 5,
     },
     {
-      productName : 'Nombre del producto',
-      brand : 'Marca',
+      productName : 'Llave combinada',
+      brand : 'Bremen',
       price : 400,
       stock :3,
       description : 'Descripcion',
@@ -37,8 +38,8 @@ export class ArticleListComponent implements OnInit {
       discount :0,
     },
     {
-      productName : 'Nombre del producto',
-      brand : 'Marca',
+      productName : 'Llave inglesa',
+      brand : 'Bahco',
       price : 3600,
       stock :0,
       description : 'Descripcion',
@@ -46,8 +47,8 @@ export class ArticleListComponent implements OnInit {
       discount : 30,
     },
     {
-      productName : 'Nombre del producto',
-      brand : 'Marca',
+      productName : 'Destornillador',
+      brand : 'Bremen',
       price : 1500,
       stock :4,
       description : 'Descripcion',
@@ -55,8 +56,8 @@ export class ArticleListComponent implements OnInit {
       discount : 0,
     },
     {
-      productName : 'Nombre del producto',
-      brand : 'Marca',
+      productName : 'Prensa carpintero',
+      brand : 'Wembley',
       price : 2000,
       stock :4,
       description : 'Descripcion',
@@ -64,8 +65,8 @@ export class ArticleListComponent implements OnInit {
       discount : 10,
     },
     {
-      productName : 'Nombre del producto',
-      brand : 'Marca',
+      productName : 'Caladora 380W',
+      brand : 'Skil',
       price : 20000,
       stock :4,
       description : 'Descripcion',
@@ -73,8 +74,8 @@ export class ArticleListComponent implements OnInit {
       discount : 0,
     },
     {
-      productName : 'Nombre del producto',
-      brand : 'Marca',
+      productName : 'Juego destornilladores',
+      brand : 'Bremen',
       price : 8560,
       stock :10,
       description : 'Descripcion',
@@ -84,7 +85,15 @@ export class ArticleListComponent implements OnInit {
   ]
 
   
-  constructor() { }
+  constructor(private cart: CartService) { }
+  addToCart(producto : Product): void{
+    if (producto.quantity>0){
+      this.cart.addToCart(producto);
+      producto.stock -= producto.quantity;
+      producto.quantity = 0;
+    }
+    
+  }
 
   ngOnInit(): void {}
 
