@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from '../cart.service';
+import { ArticleDataService } from '../services/article-data.service';
+import { CartService } from '../services/cart.service';
 import {Product} from './article';
 
 @Component({
@@ -85,7 +86,9 @@ export class ArticleListComponent implements OnInit {
   ]
 
   
-  constructor(private cart: CartService) { }
+  constructor(
+    private cart: CartService,
+    private articlesData : ArticleDataService) { }
   addToCart(producto : Product): void{
     if (producto.quantity>0){
       this.cart.addToCart(producto);
