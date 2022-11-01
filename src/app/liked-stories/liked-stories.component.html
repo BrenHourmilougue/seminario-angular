@@ -1,0 +1,12 @@
+<h3>Historias que te han gustado</h3>
+<ul>
+    <li *ngFor="let story of likedList$ |async">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{story.title}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{story.date}}</h6>
+              <p class="card-text">{{story.story}}</p>
+            </div>
+          </div>
+    </li>
+</ul>

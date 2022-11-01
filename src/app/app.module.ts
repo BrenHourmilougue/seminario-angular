@@ -12,6 +12,8 @@ import { HomeComponent } from './home/home.component';
 import { StoreComponent } from './store/store.component';
 import { InputIntegerComponent } from './input-integer/input-integer.component';
 import { StorySectionComponent } from './story-section/story-section.component';
+import { LikedStoriesComponent } from './liked-stories/liked-stories.component';
+import { LikeComponent } from './like/like.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { StorySectionComponent } from './story-section/story-section.component';
     HomeComponent,
     StoreComponent,
     InputIntegerComponent,
-    StorySectionComponent
+    StorySectionComponent,
+    LikedStoriesComponent,
+    LikeComponent
   ],
   imports: [
     BrowserModule,

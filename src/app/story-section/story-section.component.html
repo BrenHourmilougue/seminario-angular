@@ -1,7 +1,9 @@
-<div class="card" style="width: 18rem;" *ngFor="let story of stories">
+<div class="card" *ngFor="let story of stories">
     <div class="card-body">
       <h5 class="card-title">{{story.title}}</h5>
       <h6 class="card-subtitle mb-2 text-muted">{{story.date}}</h6>
       <p class="card-text">{{story.story}}</p>
+      <button *ngIf="story.liked==false" class="btn btn-light" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" (click)="addToLikedStories(story)"><img style="width:25px" src="./assets/images/like.icon.webp" alt=""></button>
+      <button *ngIf="story.liked==true" class="btn btn-light" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" (click)="deleteFromLikedStories(story)"><img style="width:20px"src="./assets/images/dislike.icon.png" alt=""></button>
     </div>
   </div>
