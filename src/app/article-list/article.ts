@@ -4,6 +4,6 @@ export interface Product {
     price: number;
     stock: number;
     description : String;
-    quantity:number;
     discount : number;
+    quantity:number;
   }
